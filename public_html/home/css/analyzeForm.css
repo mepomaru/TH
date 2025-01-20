@@ -85,6 +85,13 @@ textarea {
     min-height: 100px;
 }
 
+span,
+span p {
+    font-size: 16px;
+    color: #4a86a3;
+    /* 青系の文字色 */
+}
+
 /* ボタン */
 .button {
     display: inline-block;
