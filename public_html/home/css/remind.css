@@ -14,16 +14,19 @@ body {
 /* ヘッダーのスタイル */
 header {
     width: 100%;
-    padding: 10px 20px;
+    padding-top: 30px;
     background-color: #d6f0ff;
+    /* 淡い青 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
 }
 
 header h1 {
     margin: 0;
+    height: 70px;
     color: #7ab8d9;
-    font-size: 24px;
+    /* 青がかった色 */
+    font-size: 35px;
 }
 
 /* コンテナ */
@@ -49,16 +52,6 @@ header h1 {
     font-size: 26px;
     color: #5ca0c9;
     margin-bottom: 20px;
-}
-
-/* 入力フィールド */
-input[type="text"] {
-    width: 90%;
-    padding: 12px;
-    margin: 10px 0 20px;
-    border: 1px solid #aed8e9;
-    border-radius: 8px;
-    font-size: 16px;
 }
 
 /* ボタン */
