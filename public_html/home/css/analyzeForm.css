@@ -85,8 +85,7 @@ textarea {
     min-height: 100px;
 }
 
-span,
-span p {
+span {
     font-size: 16px;
     color: #4a86a3;
     /* 青系の文字色 */
