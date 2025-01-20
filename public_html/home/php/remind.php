@@ -77,7 +77,7 @@ if ($error["status"]) {
     <!-- 登録フォームのコンテナ -->
     <div class="container">
         <div class="card">
-            <h2>注意事項</h2>
+            <h2>ご利用の際の注意事項</h2>
             <form action="./analyzeForm.php" method="post">
                 <ul>
                     <li>この分析が必ずしも正しいとは限りません。<br>分析を参考としてご利用ください。</li>
