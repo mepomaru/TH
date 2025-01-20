@@ -1,0 +1,90 @@
+/* ベースのスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7ff, #b3e5fc);
+    color: #444;
+}
+
+/* ヘッダーのスタイル */
+header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #d6f0ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+header h1 {
+    margin: 0;
+    color: #7ab8d9;
+    font-size: 24px;
+}
+
+/* コンテナ */
+.container {
+    max-width: 500px;
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* カードのスタイル */
+.card {
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 26px;
+    color: #5ca0c9;
+    margin-bottom: 20px;
+}
+
+/* 入力フィールド */
+input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #aed8e9;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* ボタン */
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    background-color: #7ab8d9;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #5ca0c9;
+}
+
+ul {
+    text-align: left;
+}
+
+li {
+    font-weight: bold;
+}
