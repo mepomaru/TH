@@ -15,7 +15,7 @@ body {
 /* ヘッダーのスタイル */
 header {
     width: 100%;
-    padding: 25px 20px;
+    padding-top: 30px;
     background-color: #d6f0ff;
     /* 淡い青 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -24,9 +24,10 @@ header {
 
 header h1 {
     margin: 0;
+    height: 70px;
     color: #7ab8d9;
     /* 青がかった色 */
-    font-size: 32px;
+    font-size: 35px;
 }
 
 main {

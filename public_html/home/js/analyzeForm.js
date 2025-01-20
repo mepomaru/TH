@@ -17,6 +17,16 @@ function initializeCharCount(textareaId, countSpanId) {
 // ページが読み込まれたときに各テキストエリアにイベントを設定
 window.addEventListener("DOMContentLoaded", () => {
     const fields = [
+        "core_values",
+        "accomplishment",
+        "lesson",
+        "core_values_repeat",
+        "compliment",
+        "coping",
+        "challenge_feelings",
+        "ideal_self",
+        "future_self",
+        "contribution",
         "life_priority",
         "redo",
         "strength",
@@ -29,17 +39,10 @@ window.addEventListener("DOMContentLoaded", () => {
         "adaptability"
     ];
 
+
     fields.forEach(field => {
-        const textareaId = "textBox-" + field;
-        const countSpanId = "charCount-" + field;
+        const textareaId = field;
+        const countSpanId = field + "_count";
         initializeCharCount(textareaId, countSpanId);
     });
-});
-
-const navigateForm = document.getElementById("objective-form");
-
-navigateForm.addEventListener("submit", (event) => {
-    // ロードフラグをセット
-    localStorage.setItem("showLoading", "true");
-    // フォーム送信後に画面遷移 (デフォルト動作を許可)
 });

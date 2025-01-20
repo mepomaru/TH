@@ -6,7 +6,7 @@
     <title>分析用フォーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/analyzeForm.css">
-    <script src=""></script>
+    <script src="./../js/analyzeForm.js"></script>
 </head>
 
 <body>
@@ -190,9 +190,7 @@
                     <!-- /客観的質問 -->
 
                     <!-- 送信ボタン -->
-                    <div id="registration" class="button-item">
-                        <button class="registration" type="submit">提出する</button>
-                    </div>
+                    <button class="button" type="submit">提出する</button>
                     <!-- /送信ボタン -->
                 </from>
             </div>
