@@ -19,120 +19,144 @@
 
     <!-- main -->
     <main>
-        <from id="analyzeFrom" method="POST" action="">
+        <div class="container">
+            <div class="card">
+                <from id="analyzeFrom" method="POST" action="">
+                    <!-- 主観的質問 -->
+                    <h3>主観的に自分を分析する質問</h3>
+                    <div>
+                        <label for="core_values" class="card">これまでの人生で、最も印象に残っている出来事は何ですか？その出来事から何を学びましたか？</label>
+                        <textarea id="core_values" name="core_values" rows="7" cols="50" required></textarea>
+                        <span id="core_values_count">0</span>文字<br>
+                    </div>
 
-            <div class="form-container">
-                <!-- 主観的質問 -->
-                <h3>主観的に自分を分析する質問</h3>
-                <div>
-                    <label for="core_values" class="card">これまでの人生で、最も印象に残っている出来事は何ですか？その出来事から何を学びましたか？</label>
-                    <input type="text" name="core_values" id="core_values" required>
-                </div>
+                    <div>
+                        <label for="accomplishment" class="card">何かを成し遂げた時、一番嬉しかったことは何ですか？その経験から、自分の強みだと気づいたことはありますか？</label>
+                        <textarea id="accomplishment" name="accomplishment" rows="7" cols="50" required></textarea>
+                        <span id="accomplishment_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="accomplishment" class="card">何かを成し遂げた時、一番嬉しかったことは何ですか？その経験から、自分の強みだと気づいたことはありますか？</label>
-                    <input type="text" name="accomplishment" id="accomplishment" required>
-                </div>
+                    <div>
+                        <label for="lesson" class="card">失敗した経験から学んだことで、最も大きかったことは何ですか？</label>
+                        <textarea id="lesson" name="lesson" rows="7" cols="50" required></textarea>
+                        <span id="lesson_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="lesson" class="card">失敗した経験から学んだことで、最も大きかったことは何ですか？</label>
-                    <input type="text" name="lesson" id="lesson" required>
-                </div>
+                    <div>
+                        <label for="core_values_repeat" class="card">過去の経験から、自分が大切にしている価値観は何だと気づきましたか？</label>
+                        <textarea id="core_values_repeat" name="core_values_repeat" rows="7" cols="50" required></textarea>
+                        <span id="core_values_repeat_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="core_values" class="card">過去の経験から、自分が大切にしている価値観は何だと気づきましたか？</label>
-                    <input type="text" name="core_values" id="core_values" required>
-                </div>
+                    <div>
+                        <label for="compliment" class="card">周りからよく褒められることは何ですか？</label>
+                        <textarea id="compliment" name="compliment" rows="7" cols="50" required></textarea>
+                        <span id="compliment_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="compliment" class="card">周りからよく褒められることは何ですか？</label>
-                    <input type="text" name="compliment" id="compliment" required>
-                </div>
+                    <div>
+                        <label for="coping" class="card">ストレスを感じるとき、どのように対処しますか？</label>
+                        <textarea id="coping" name="coping" rows="7" cols="50" required></textarea>
+                        <span id="coping_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="coping" class="card">ストレスを感じるとき、どのように対処しますか？</label>
-                    <input type="text" name="coping" id="coping" required>
-                </div>
+                    <div>
+                        <label for="challenge_feelings" class="card">新しいことに挑戦する時、どんな気持ちになりますか？</label>
+                        <textarea id="challenge_feelings" name="challenge_feelings" rows="7" cols="50" required></textarea>
+                        <span id="challenge_feelings_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="challenge_feelings" class="card">新しいことに挑戦する時、どんな気持ちになりますか？</label>
-                    <input type="text" name="challenge_feelings" id="challenge_feelings" required>
-                </div>
+                    <div>
+                        <label for="ideal_self" class="card">理想の自分はどんな姿ですか？</label>
+                        <textarea id="ideal_self" name="ideal_self" rows="7" cols="50" required></textarea>
+                        <span id="ideal_self_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="ideal_self" class="card">理想の自分はどんな姿ですか？</label>
-                    <input type="text" name="ideal_self" id="ideal_self" required>
-                </div>
+                    <div>
+                        <label for="future_self" class="card">5年後の自分はどうなっていたいですか？</label>
+                        <textarea id="future_self" name="future_self" rows="7" cols="50" required></textarea>
+                        <span id="future_self_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="future_self" class="card">5年後の自分はどうなっていたいですか？</label>
-                    <input type="text" name="future_self" id="future_self" required>
-                </div>
+                    <div>
+                        <label for="contribution" class="card">どんな仕事や生き方で、社会に貢献したいですか？</label>
+                        <textarea id="contribution" name="contribution" rows="7" cols="50" required></textarea>
+                        <span id="contribution_count">0</span>文字<br>
+                    </div>
+                    <!-- /主観的質問 -->
 
-                <div>
-                    <label for="contribution" class="card">どんな仕事や生き方で、社会に貢献したいですか？</label>
-                    <input type="text" name="contribution" id="contribution" required>
-                </div>
-                <!-- /主観的質問 -->
+                    <!-- 客観的質問 -->
+                    <h3>客観的に自分を分析する質問</h3>
 
-                <!-- 客観的質問 -->
-                <h3>客観的に自分を分析する質問</h3>
-                <div>
-                    <label for="life_priority" class="card">あなたにとって、人生で最も大切にしたいことは何ですか？</label>
-                    <input type="text" name="life_priority" id="life_priority" required>
-                </div>
+                    <div>
+                        <label for="life_priority" class="card">あなたにとって、人生で最も大切にしたいことは何ですか？</label>
+                        <textarea id="life_priority" name="life_priority" rows="7" cols="50" required></textarea>
+                        <span id="life_priority_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="redo" class="card">もし、人生をやり直せるなら、どんなことをしたいですか？</label>
-                    <input type="text" name="redo" id="redo" required>
-                </div>
+                    <div>
+                        <label for="redo" class="card">もし、人生をやり直せるなら、どんなことをしたいですか？</label>
+                        <textarea id="redo" name="redo" rows="7" cols="50" required></textarea>
+                        <span id="redo_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="strength" class="card">あなたが最も得意なことを一つ挙げ、その理由を具体的に説明してください。</label>
-                    <input type="text" name="strength" id="strength" required>
-                </div>
+                    <div>
+                        <label for="strength" class="card">あなたが最も得意なことを一つ挙げ、その理由を具体的に説明してください。</label>
+                        <textarea id="strength" name="strength" rows="7" cols="50" required></textarea>
+                        <span id="strength_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="weakness" class="card">あなたが最も苦手なことを一つ挙げ、その理由を具体的に説明してください。</label>
-                    <input type="text" name="weakness" id="weakness" required>
-                </div>
+                    <div>
+                        <label for="weakness" class="card">あなたが最も苦手なことを一つ挙げ、その理由を具体的に説明してください。</label>
+                        <textarea id="weakness" name="weakness" rows="7" cols="50" required></textarea>
+                        <span id="weakness_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="growth" class="card">過去に最も成長できた経験は何ですか？その経験から、何を学びましたか？</label>
-                    <input type="text" name="growth" id="growth" required>
-                </div>
+                    <div>
+                        <label for="growth" class="card">過去に最も成長できた経験は何ですか？その経験から、何を学びましたか？</label>
+                        <textarea id="growth" name="growth" rows="7" cols="50" required></textarea>
+                        <span id="growth_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="relationship_value" class="card">人間関係において、最も大切にしていることは何ですか？</label>
-                    <input type="text" name="relationship_value" id="relationship_value" required>
-                </div>
+                    <div>
+                        <label for="relationship_value" class="card">人間関係において、最も大切にしていることは何ですか？</label>
+                        <textarea id="relationship_value" name="relationship_value" rows="7" cols="50" required></textarea>
+                        <span id="relationship_value_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="advice" class="card">もし、誰か人間関係で何か一つだけアドバイスできるとしたら、どんなことを言いますか？</label>
-                    <input type="text" name="advice" id="advice" required>
-                </div>
+                    <div>
+                        <label for="advice" class="card">もし、誰か人間関係で何か一つだけアドバイスできるとしたら、どんなことを言いますか？</label>
+                        <textarea id="advice" name="advice" rows="7" cols="50" required></textarea>
+                        <span id="advice_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="stress_management" class="card">ストレスを感じた時、どのように対処しますか？</label>
-                    <input type="text" name="stress_management" id="stress_management" required>
-                </div>
+                    <div>
+                        <label for="stress_management" class="card">ストレスを感じた時、どのように対処しますか？</label>
+                        <textarea id="stress_management" name="stress_management" rows="7" cols="50" required></textarea>
+                        <span id="stress_management_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="happiness" class="card">幸せを感じる瞬間は、どのような時ですか？</label>
-                    <input type="text" name="happiness" id="happiness" required>
-                </div>
+                    <div>
+                        <label for="happiness" class="card">幸せを感じる瞬間は、どのような時ですか？</label>
+                        <textarea id="happiness" name="happiness" rows="7" cols="50" required></textarea>
+                        <span id="happiness_count">0</span>文字<br>
+                    </div>
 
-                <div>
-                    <label for="adaptability" class="card">変化に対して、あなたはどちらかと言えば積極的に対応する方ですか、それとも消極的な方ですか？</label>
-                    <input type="text" name="adaptability" id="adaptability" required>
-                </div>
-                <!-- /客観的質問 -->
+                    <div>
+                        <label for="adaptability" class="card">変化に対して、あなたはどちらかと言えば積極的に対応する方ですか、それとも消極的な方ですか？</label>
+                        <textarea id="adaptability" name="adaptability" rows="7" cols="50" required></textarea>
+                        <span id="adaptability_count">0</span>文字<br>
+                    </div>
+                    <!-- /客観的質問 -->
+
+                    <!-- 送信ボタン -->
+                    <div id="registration" class="button-item">
+                        <button class="registration" type="submit">提出する</button>
+                    </div>
+                    <!-- /送信ボタン -->
+                </from>
             </div>
-
-            <div id="registration" class="button-item">
-                <button class="registration" type="submit">提出する</button>
-            </div>
-        </from>
+        </div>
     </main>
     <!-- /main -->
 </body>
