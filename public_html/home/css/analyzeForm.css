@@ -11,6 +11,19 @@ body {
     color: #444;
 }
 
+/* ベースのスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8dff5, #c7b8e0);
+    color: #444;
+}
+
 /* ヘッダーのスタイル */
 header {
     width: 100%;
@@ -26,39 +39,46 @@ header h1 {
     font-size: 32px;
 }
 
-/* フォームコンテナ */
-.form-container {
+main {
+    width: 1200px;
+}
+
+/* コンテナ */
+.container {
     max-width: 1200px;
-    margin: 50px auto;
+    margin-top: 50px;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-/* フォーム */
-form {
+/* カードのスタイル */
+.card {
     width: 100%;
-    background-color: #ffffff;
     padding: 30px;
+    background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: right;
 }
 
-/* ラベル */
-form label {
-    display: block;
-    font-size: 16px;
+.card h2 {
+    font-size: 26px;
+    color: #9e8fb6;
+    margin-bottom: 20px;
+}
+
+/* 見出しスタイル */
+.card h3 {
+    font-size: 18px;
     color: #6c4a86;
-    margin-bottom: 8px;
+    text-align: left;
+    margin: 10px 0 5px;
 }
 
-/* 入力フィールド */
-input[type="text"] {
+textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0 20px;
     font-size: 16px;
     font-weight: bold;
     border: 1px solid #ccc;
@@ -68,16 +88,10 @@ input[type="text"] {
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
-    min-height: 40px;
-    /* テキストエリア以外の場合 */
-}
-
-textarea {
     min-height: 100px;
 }
 
-/* サブミットボタン */
-button[type="submit"],
+/* ボタン */
 .button {
     display: inline-block;
     width: 100%;
@@ -92,7 +106,6 @@ button[type="submit"],
     transition: background-color 0.3s;
 }
 
-form button[type="submit"]:hover,
 .button:hover {
     background-color: #8f73a8;
 }
