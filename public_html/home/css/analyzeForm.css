@@ -1,0 +1,113 @@
+/* ベースのスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7ff, #b3e5fc);
+    /* 青系のグラデーション */
+    color: #444;
+}
+
+/* ヘッダーのスタイル */
+header {
+    width: 100%;
+    padding: 25px 20px;
+    background-color: #d6f0ff;
+    /* 淡い青 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #7ab8d9;
+    /* 青がかった色 */
+    font-size: 32px;
+}
+
+main {
+    width: 1200px;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1200px;
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* カードのスタイル */
+.card {
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.card h2 {
+    font-size: 26px;
+    color: #5ca0c9;
+    /* 青系のタイトル色 */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 見出しスタイル */
+.card h3 {
+    font-size: 18px;
+    color: #4a86a3;
+    /* 青系の見出し色 */
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #aed8e9;
+    /* 青系の境界線色 */
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    min-height: 100px;
+}
+
+span {
+    font-size: 16px;
+    color: #4a86a3;
+    /* 青系の文字色 */
+}
+
+/* ボタン */
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    background-color: #7ab8d9;
+    /* ボタンの青系背景色 */
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #5ca0c9;
+    /* ホバー時の濃い青 */
+}
