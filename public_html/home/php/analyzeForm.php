@@ -6,7 +6,7 @@
     <title>分析用フォーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/analyzeForm.css">
-    <script src=""></script>
+    <script src="./../js/analyzeForm.js"></script>
 </head>
 
 <body>
