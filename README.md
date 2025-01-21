@@ -1,2 +1,2 @@
 # TH
-my personal project
+my personal project "True Hue"
