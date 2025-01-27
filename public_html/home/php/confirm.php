@@ -19,7 +19,7 @@ $form_data = $_SESSION['form_data'];
     <meta charset="utf-8">
     <title>入力内容の確認</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/confirmForm.css">
+    <link rel="stylesheet" href="../css/confirm.css">
 </head>
 
 <body>
