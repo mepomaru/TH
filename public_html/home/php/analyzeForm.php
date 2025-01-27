@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="container">
             <div class="card">
-                <from id="analyzeFrom" method="POST" action="">
+                <form id="analyzeFrom" method="POST" action="./confirm.php">
                     <!-- 主観的質問 -->
                     <h2>主観的に自分を分析する質問</h2>
                     <div>
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- 送信ボタン -->
                     <button class="button" type="submit">提出する</button>
                     <!-- /送信ボタン -->
-                </from>
+                </form>
             </div>
         </div>
     </main>
