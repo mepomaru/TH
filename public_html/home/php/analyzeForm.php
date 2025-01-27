@@ -1,3 +1,39 @@
+<?php
+// セッションの開始
+session_start();
+
+// フォームが送信された場合
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 入力データをセッションに保存
+    $_SESSION['form_data'] = [
+        'core_values' => $_POST['core_values'] ?? '',
+        'accomplishment' => $_POST['accomplishment'] ?? '',
+        'lesson' => $_POST['lesson'] ?? '',
+        'core_values_repeat' => $_POST['core_values_repeat'] ?? '',
+        'compliment' => $_POST['compliment'] ?? '',
+        'coping' => $_POST['coping'] ?? '',
+        'challenge_feelings' => $_POST['challenge_feelings'] ?? '',
+        'ideal_self' => $_POST['ideal_self'] ?? '',
+        'future_self' => $_POST['future_self'] ?? '',
+        'contribution' => $_POST['contribution'] ?? '',
+        'life_priority' => $_POST['life_priority'] ?? '',
+        'redo' => $_POST['redo'] ?? '',
+        'strength' => $_POST['strength'] ?? '',
+        'weakness' => $_POST['weakness'] ?? '',
+        'growth' => $_POST['growth'] ?? '',
+        'relationship_value' => $_POST['relationship_value'] ?? '',
+        'advice' => $_POST['advice'] ?? '',
+        'stress_management' => $_POST['stress_management'] ?? '',
+        'happiness' => $_POST['happiness'] ?? '',
+        'adaptability' => $_POST['adaptability'] ?? ''
+    ];
+
+    // データ確認ページにリダイレクト
+    header('Location: confirm.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
