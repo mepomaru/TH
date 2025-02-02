@@ -7,23 +7,27 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #e8dff5, #c7b8e0);
+    background: linear-gradient(135deg, #e0f7ff, #b3e5fc);
+    /* `analyzeForm.php` の背景色に統一 */
     color: #444;
 }
 
 /* ヘッダーのスタイル */
 header {
     width: 100%;
-    padding: 25px 20px;
-    background-color: #f3e9f7;
+    padding-top: 30px;
+    background-color: #d6f0ff;
+    /* `analyzeForm.php` のヘッダーと統一 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 header h1 {
     margin: 0;
-    color: #a78ab8;
-    font-size: 32px;
+    height: 70px;
+    color: #7ab8d9;
+    /* `analyzeForm.php` のタイトル色と統一 */
+    font-size: 35px;
 }
 
 main {
@@ -46,53 +50,68 @@ main {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: right;
+    text-align: center;
 }
 
 .card h2 {
     font-size: 26px;
-    color: #9e8fb6;
+    color: #5ca0c9;
+    /* `analyzeForm.php` の見出しと統一 */
     margin-bottom: 20px;
 }
 
-/* 見出しスタイル */
-.card h3 {
-    font-size: 18px;
-    color: #6c4a86;
+/* フォームグループのスタイル */
+.form-group {
+    margin-bottom: 20px;
     text-align: left;
-    margin: 10px 0 5px;
 }
 
-textarea {
-    width: 100%;
-    padding: 10px;
+.form-group h3 {
+    font-size: 18px;
+    color: #4a86a3;
+    /* `analyzeForm.php` の見出し色と統一 */
+    margin-bottom: 5px;
+}
+
+.form-group p {
     font-size: 16px;
-    font-weight: bold;
-    border: 1px solid #ccc;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    resize: none;
-    box-sizing: border-box;
-    overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
-    min-height: 100px;
 }
 
 /* ボタン */
 .button {
     display: inline-block;
-    width: 100%;
-    padding: 12px;
+    padding: 12px 20px;
     color: #fff;
-    background-color: #a78ab8;
+    background-color: #7ab8d9;
+    /* `analyzeForm.php` のボタン色と統一 */
     border-radius: 8px;
     text-align: center;
     font-weight: bold;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 .button:hover {
-    background-color: #8f73a8;
+    background-color: #5ca0c9;
+    /* ホバー時の色も統一 */
+}
+
+/* ボタンのグループ配置 */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.button-group .button {
+    width: 48%;
 }

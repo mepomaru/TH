@@ -78,7 +78,7 @@ if ($error["status"]) {
     <div class="container">
         <div class="card">
             <h2>ご利用の際の注意事項</h2>
-            <form action="./analyzeForm.php" method="post">
+            <form action="./analyzeForm.php" method="GET">
                 <ul>
                     <li>この分析が必ずしも正しいとは限りません。<br>分析を参考としてご利用ください。</li>
                     <li>解答にご自身の名前を記入しないようにしてください。</li>
