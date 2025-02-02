@@ -7,8 +7,8 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f0f9ff, #cfe9f3);
-    /* 明るい青系のグラデーション */
+    background: linear-gradient(135deg, #e0f7ff, #b3e5fc);
+    /* `analyzeForm.php` の背景色に統一 */
     color: #444;
 }
 
@@ -16,8 +16,8 @@ body {
 header {
     width: 100%;
     padding-top: 30px;
-    background-color: #e6f7ff;
-    /* 淡い青 */
+    background-color: #d6f0ff;
+    /* `analyzeForm.php` のヘッダーと統一 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -25,20 +25,18 @@ header {
 header h1 {
     margin: 0;
     height: 70px;
-    color: #5ca0c9;
-    /* 青系のタイトル色 */
+    color: #7ab8d9;
+    /* `analyzeForm.php` のタイトル色と統一 */
     font-size: 35px;
 }
 
 main {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin: auto;
+    width: 1200px;
 }
 
 /* コンテナ */
 .container {
+    max-width: 1200px;
     margin-top: 50px;
     padding: 20px;
     display: flex;
@@ -58,7 +56,7 @@ main {
 .card h2 {
     font-size: 26px;
     color: #5ca0c9;
-    /* 青系のタイトル色 */
+    /* `analyzeForm.php` の見出しと統一 */
     margin-bottom: 20px;
 }
 
@@ -71,7 +69,7 @@ main {
 .form-group h3 {
     font-size: 18px;
     color: #4a86a3;
-    /* 青系の見出し色 */
+    /* `analyzeForm.php` の見出し色と統一 */
     margin-bottom: 5px;
 }
 
@@ -91,8 +89,8 @@ main {
     display: inline-block;
     padding: 12px 20px;
     color: #fff;
-    background-color: #5ca0c9;
-    /* ボタンの青系背景色 */
+    background-color: #7ab8d9;
+    /* `analyzeForm.php` のボタン色と統一 */
     border-radius: 8px;
     text-align: center;
     font-weight: bold;
@@ -103,8 +101,8 @@ main {
 }
 
 .button:hover {
-    background-color: #417f9b;
-    /* ホバー時の濃い青 */
+    background-color: #5ca0c9;
+    /* ホバー時の色も統一 */
 }
 
 /* ボタンのグループ配置 */
