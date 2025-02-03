@@ -1,0 +1,96 @@
+/* ベースのスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7ff, #b3e5fc);
+    /* 青系のグラデーション */
+    color: #444;
+    text-align: center;
+}
+
+/* ヘッダーのスタイル */
+header {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #d6f0ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #7ab8d9;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* カードのスタイル */
+.card {
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 26px;
+    color: #5ca0c9;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* 見出しスタイル */
+.card h3 {
+    font-size: 18px;
+    color: #4a86a3;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ボタン */
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    background-color: #7ab8d9;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #5ca0c9;
+}
