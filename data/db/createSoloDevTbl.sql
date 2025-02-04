@@ -33,7 +33,7 @@ CREATE TABLE user (
 --     ideal_self VARCHAR(512),
 --     future_self VARCHAR(512),
 --     contribution VARCHAR(512)
-);
+--);
 
 CREATE TABLE subjective_ans (
     account_id INT,
