@@ -7,14 +7,6 @@ Author : S.Ohgami
 
 /*---------------以下テーブル削除----------------------*/
 DROP TABLE IF EXISTS USER;
-
-DROP TABLE IF EXISTS subjective_qes;
-
-DROP TABLE IF EXISTS subjective_ans;
-
-DROP TABLE IF EXISTS objective_qes;
-
-DROP TABLE IF EXISTS objective_ans;
 /*---------------以下テーブル作成----------------------*/
 CREATE TABLE user (
     account_id INT AUTO_INCREMENT, -- アカウントID
