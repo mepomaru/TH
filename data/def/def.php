@@ -12,6 +12,5 @@ define("DB_NAME", "trueHue");
 define("DB_CHARSET", "utf8mb4");
 
 define('TBL_USER', "USER");
-define('TBL_ANS', "ANSWER");
-define('TBL_SBJ_QES', "SUBJECTIVE_QES");
-define('TBL_OBJ_QES', 'OBJECTIVE_QES');
+define('TBL_QES', "QUESTIONS");
+define('TBL_ANS', "ANSWERS");
