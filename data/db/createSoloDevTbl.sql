@@ -7,12 +7,16 @@ Author : S.Ohgami
 
 /*---------------以下テーブル削除----------------------*/
 DROP TABLE IF EXISTS USER;
+DROP TABLE IF EXISTS QUESTIONS;
+DROP TABLE IF EXISTS ANSWERS;
 /*---------------以下テーブル作成----------------------*/
 CREATE TABLE user (
-    account_id INT AUTO_INCREMENT, -- アカウントID
-    uname VARCHAR(64), -- ユーザー名
-    PRIMARY KEY (account_id) -- 主キー制約
+    account_id INT AUTO_INCREMENT PRIMARY KEY, 
+    email VARCHAR(255) UNIQUE NOT NULL,  -- メールアドレス（ユニーク）
+    password VARCHAR(255) NOT NULL,      -- ハッシュ化されたパスワード
+    uname VARCHAR(64) NOT NULL           -- ニックネーム
 );
+
 
 CREATE TABLE questions (
     id INT AUTO_INCREMENT PRIMARY KEY, 
