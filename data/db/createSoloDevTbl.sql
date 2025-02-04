@@ -22,6 +22,31 @@ CREATE TABLE user (
     PRIMARY KEY (account_id) -- 主キー制約
 );
 
+CREATE TABLE answers (
+    account_id INT PRIMARY KEY,
+    core_values_ans VARCHAR(512),
+    accomplishment_ans VARCHAR(512),
+    lesson_ans VARCHAR(512),
+    core_values_repeat_ans VARCHAR(512),
+    compliment_ans VARCHAR(512),
+    coping_ans VARCHAR(512),
+    challenge_feelings_ans VARCHAR(512),
+    ideal_self_ans VARCHAR(512),
+    future_self_ans VARCHAR(512),
+    contribution_ans VARCHAR(512),
+    life_priority_ans VARCHAR(512),
+    redo_ans VARCHAR(512),
+    strength_ans VARCHAR(512),
+    weakness_ans VARCHAR(512),
+    growth_ans VARCHAR(512),
+    relationship_value_ans VARCHAR(512),
+    advice_ans VARCHAR(512),
+    stress_management_ans VARCHAR(512),
+    happiness_ans VARCHAR(512),
+    adaptability_ans VARCHAR(512),
+    FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
+);
+
 -- CREATE TABLE subjective_qes (
 --     memorable_event VARCHAR(512),
 --     accomplishment VARCHAR(512),
@@ -35,20 +60,20 @@ CREATE TABLE user (
 --     contribution VARCHAR(512)
 --);
 
-CREATE TABLE subjective_ans (
-    account_id INT,
-    memorable_event VARCHAR(512),
-    accomplishment VARCHAR(512),
-    lesson VARCHAR(512),
-    core_values VARCHAR(512),
-    compliment VARCHAR(512),
-    coping VARCHAR(512),
-    challenge_feelings VARCHAR(512),
-    ideal_self VARCHAR(512),
-    future_self VARCHAR(512),
-    contribution VARCHAR(512),
-    FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
-);
+-- CREATE TABLE subjective_ans (
+--     account_id INT,
+--     memorable_event VARCHAR(512),
+--     accomplishment VARCHAR(512),
+--     lesson VARCHAR(512),
+--     core_values VARCHAR(512),
+--     compliment VARCHAR(512),
+--     coping VARCHAR(512),
+--     challenge_feelings VARCHAR(512),
+--     ideal_self VARCHAR(512),
+--     future_self VARCHAR(512),
+--     contribution VARCHAR(512),
+--     FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
+-- );
 
 -- CREATE TABLE objective_qes (
 --     life_priority VARCHAR(512),
@@ -63,20 +88,20 @@ CREATE TABLE subjective_ans (
 --     adaptability VARCHAR(512)
 -- );
 
-CREATE TABLE objective_ans (
-    account_id INT,
-    life_priority VARCHAR(512),
-    redo VARCHAR(512),
-    strength VARCHAR(512),
-    weakness VARCHAR(512),
-    growth VARCHAR(512),
-    relationship_value VARCHAR(512),
-    advice VARCHAR(512),
-    stress_management VARCHAR(512),
-    happiness VARCHAR(512),
-    adaptability VARCHAR(512),
-    FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
-);
+-- CREATE TABLE objective_ans (
+--     account_id INT,
+--     life_priority VARCHAR(512),
+--     redo VARCHAR(512),
+--     strength VARCHAR(512),
+--     weakness VARCHAR(512),
+--     growth VARCHAR(512),
+--     relationship_value VARCHAR(512),
+--     advice VARCHAR(512),
+--     stress_management VARCHAR(512),
+--     happiness VARCHAR(512),
+--     adaptability VARCHAR(512),
+--     FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
+-- );
 
 /*---------------------データ挿入---------------------------*/
 -- INSERT INTO
