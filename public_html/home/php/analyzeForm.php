@@ -1,22 +1,36 @@
 <?php
 session_start();
+include '../../../data/def/def.php'; // データベース接続設定ファイル
 
-// 初回アクセス時（remind.php からの遷移時）
+// データベース接続
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if (!$conn) {
+    die("データベース接続エラー: " . mysqli_connect_error());
+}
+
+// 質問をデータベースから取得
+$questions = [];
+$result = mysqli_query($conn, "SELECT question_key, question_text FROM questions");
+while ($row = mysqli_fetch_assoc($result)) {
+    $questions[$row['question_key']] = $row['question_text'];
+}
+mysqli_close($conn);
+
+// 初回アクセス時にセッションをクリア（remind.php から来た場合）
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_SESSION['from_confirm'])) {
-    // 初回のみセッションをクリア
     unset($_SESSION['form_data']);
 }
 
-// confirm.php からの戻りではセッションデータを保持
+// confirm.php から戻った場合、セッションデータを保持
 if (isset($_SESSION['from_confirm'])) {
-    unset($_SESSION['from_confirm']); // フラグのみ削除
+    unset($_SESSION['from_confirm']);
 }
 
 // フォーム送信時（POST のみ処理）
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
-    $_SESSION['form_data'] = $_POST; // 入力内容をセッションに保存
-    $_SESSION['from_confirm'] = true; // 確認画面から戻ったことを記録
-    header('Location: confirm.php'); // 確認画面にリダイレクト
+    $_SESSION['form_data'] = $_POST;
+    $_SESSION['from_confirm'] = true;
+    header('Location: confirm.php');
     exit;
 }
 
@@ -29,200 +43,37 @@ $form_data = $_SESSION['form_data'] ?? [];
 
 <head>
     <meta charset="utf-8">
-    <title>分析用フォーム</title>
+    <title>自己分析用フォーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/analyzeForm.css">
-    <script src="./../js/analyzeForm.js"></script>
+    <script src="../js/analyzeForm.js" defer></script>
 </head>
 
 <body>
-    <!-- header -->
     <header>
         <h1>自己分析用フォーム</h1>
     </header>
-    <!-- /header -->
-
-
-    <!-- main -->
     <main>
         <div class="container">
             <div class="card">
-                <form id="analyzeFrom" method="POST" action="./analyzeForm.php">
-                    <!-- 主観的質問 -->
-                    <h2>主観的に自分を分析する質問</h2>
-                    <div>
-                        <label for="core_values">
-                            <h3>これまでの人生で、最も印象に残っている出来事は何ですか？その出来事から何を学びましたか？</h3>
-                        </label>
-                        <textarea id="core_values" name="core_values" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['core_values'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="core_values_count">0</span>文字<br>
-                    </div>
+                <form method="POST" action="analyzeForm.php">
+                    <h2>自己分析の質問</h2>
 
-                    <div>
-                        <label for="accomplishment">
-                            <h3>何かを成し遂げた時、一番嬉しかったことは何ですか？その経験から、自分の強みだと気づいたことはありますか？</h3>
-                        </label>
-                        <textarea id="accomplishment" name="accomplishment" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['accomplishment'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="accomplishment_count">0</span>文字<br>
-                    </div>
+                    <?php foreach ($questions as $key => $question): ?>
+                        <div>
+                            <label for="<?php echo $key; ?>">
+                                <h3><?php echo htmlspecialchars($question, ENT_QUOTES, 'UTF-8'); ?></h3>
+                            </label>
+                            <textarea id="<?php echo $key; ?>" name="<?php echo $key; ?>" rows="7" cols="50" required><?php echo htmlspecialchars($form_data[$key] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                            <span id="<?php echo $key; ?>_count">0</span>文字
+                        </div>
+                    <?php endforeach; ?>
 
-                    <div>
-                        <label for="lesson">
-                            <h3>失敗した経験から学んだことで、最も大きかったことは何ですか？</h3>
-                        </label>
-                        <textarea id="lesson" name="lesson" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['lesson'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="lesson_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="core_values_repeat">
-                            <h3>過去の経験から、自分が大切にしている価値観は何だと思いますか？</h3>
-                        </label>
-                        <textarea id="core_values_repeat" name="core_values_repeat" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['core_values_repeat'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="core_values_repeat_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="compliment">
-                            <h3>あなたが周りからよく褒められることは何ですか？</h3>
-                        </label>
-                        <textarea id="compliment" name="compliment" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['compliment'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="compliment_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="coping">
-                            <h3>あなたはストレスを感じるとき、どのように対処しますか？</h3>
-                        </label>
-                        <textarea id="coping" name="coping" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['coping'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="coping_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="challenge_feelings">
-                            <h3>新しいことに挑戦する時、どんな気持ちになりますか？</h3>
-                        </label>
-                        <textarea id="challenge_feelings" name="challenge_feelings" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['challenge_feelings'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="challenge_feelings_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="ideal_self">
-                            <h3>あなたの理想の自分はどんな姿ですか？</h3>
-                        </label>
-                        <textarea id="ideal_self" name="ideal_self" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['ideal_self'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="ideal_self_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="future_self">
-                            <h3>5年後の自分はどうなっていたいですか？</h3>
-                        </label>
-                        <textarea id="future_self" name="future_self" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['future_self'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="future_self_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="contribution">
-                            <h3>どんな仕事や生き方で、社会に貢献したいですか？</h3>
-                        </label>
-                        <textarea id="contribution" name="contribution" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['future_self'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="contribution_count">0</span>文字<br>
-                    </div>
-                    <!-- /主観的質問 -->
-
-                    <!-- 客観的質問 -->
-                    <h2>客観的に自分を分析する質問</h2>
-
-                    <div>
-                        <label for="life_priority">
-                            <h3>あなたにとって、人生で最も大切にしたいことは何ですか？</h3>
-                        </label>
-                        <textarea id="life_priority" name="life_priority" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['life_priority'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="life_priority_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="redo">
-                            <h3>もし、人生をやり直せるなら、どんなことをしたいですか？</h3>
-                        </label>
-                        <textarea id="redo" name="redo" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['redo'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="redo_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="strength">
-                            <h3>あなたが最も得意なことを一つ挙げ、その理由を具体的に説明してください。</h3>
-                        </label>
-                        <textarea id="strength" name="strength" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['strength'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="strength_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="weakness">
-                            <h3>あなたが最も苦手なことを一つ挙げ、その理由を具体的に説明してください。</h3>
-                        </label>
-                        <textarea id="weakness" name="weakness" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['weakness'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="weakness_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="growth">
-                            <h3>過去に最も成長できた経験は何ですか？その経験から、何を学びましたか？</h3>
-                        </label>
-                        <textarea id="growth" name="growth" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['growth'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="growth_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="relationship_value">
-                            <h3>人間関係において、最も大切にしていることは何ですか？</h3>
-                        </label>
-                        <textarea id="relationship_value" name="relationship_value" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['relationship_value'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="relationship_value_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="advice">
-                            <h3>もし、誰かに人間関係で何か一つだけアドバイスできるとしたら、どんなことを言いますか？</h3>
-                        </label>
-                        <textarea id="advice" name="advice" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['advice'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="advice_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="stress_management">
-                            <h3>ストレスを感じた時、どのように対処しますか？</h3>
-                        </label>
-                        <textarea id="stress_management" name="stress_management" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['stress_management'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="stress_management_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="happiness">
-                            <h3>幸せを感じる瞬間は、どのような時ですか？</h3>
-                        </label>
-                        <textarea id="happiness" name="happiness" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['happiness'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="happiness_count">0</span>文字<br>
-                    </div>
-
-                    <div>
-                        <label for="adaptability">
-                            <h3>変化に対して、あなたはどちらかと言えば積極的に対応する方ですか、それとも消極的な方ですか？</h3>
-                        </label>
-                        <textarea id="adaptability" name="adaptability" rows="7" cols="50" required><?php echo htmlspecialchars($form_data['adaptability'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <span id="adaptability_count">0</span>文字<br>
-                    </div>
-                    <!-- /客観的質問 -->
-
-                    <!-- 送信ボタン -->
-                    <button class="button" type="submit">確認画面へ</button>
-                    <!-- /送信ボタン -->
+                    <button type="submit" class="button">確認画面へ</button>
                 </form>
             </div>
         </div>
     </main>
-    <!-- /main -->
 </body>
 
 </html>
