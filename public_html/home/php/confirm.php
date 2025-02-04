@@ -52,7 +52,7 @@ mysqli_close($conn);
             <div class="card">
                 <h2>以下の内容で送信します</h2>
 
-                <form method="POST" action="submit.php">
+                <form method="POST" action="./submit.php">
                     <?php foreach ($form_data as $key => $value): ?>
                         <div class="form-group">
                             <h3><?php echo isset($questions[$key]) ? htmlspecialchars($questions[$key], ENT_QUOTES, 'UTF-8') : htmlspecialchars($key); ?></h3>
