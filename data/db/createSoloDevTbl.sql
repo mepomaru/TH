@@ -14,6 +14,14 @@ CREATE TABLE user (
     PRIMARY KEY (account_id) -- 主キー制約
 );
 
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    question_key VARCHAR(50) UNIQUE NOT NULL,  -- 質問の識別キー（例: memorable_event, strength）
+    question_text TEXT NOT NULL,               -- 実際の質問文
+    category ENUM('主観', '客観') NOT NULL,    -- 質問のタイプ（主観的 or 客観的）
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE answers (
     account_id INT PRIMARY KEY,
     core_values_ans VARCHAR(512),
@@ -38,112 +46,27 @@ CREATE TABLE answers (
     adaptability_ans VARCHAR(512),
     FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
 );
-
--- CREATE TABLE subjective_qes (
---     memorable_event VARCHAR(512),
---     accomplishment VARCHAR(512),
---     lesson VARCHAR(512),
---     core_values VARCHAR(512),
---     compliment VARCHAR(512),
---     coping VARCHAR(512),
---     challenge_feelings VARCHAR(512),
---     ideal_self VARCHAR(512),
---     future_self VARCHAR(512),
---     contribution VARCHAR(512)
---);
-
--- CREATE TABLE subjective_ans (
---     account_id INT,
---     memorable_event VARCHAR(512),
---     accomplishment VARCHAR(512),
---     lesson VARCHAR(512),
---     core_values VARCHAR(512),
---     compliment VARCHAR(512),
---     coping VARCHAR(512),
---     challenge_feelings VARCHAR(512),
---     ideal_self VARCHAR(512),
---     future_self VARCHAR(512),
---     contribution VARCHAR(512),
---     FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE objective_qes (
---     life_priority VARCHAR(512),
---     redo VARCHAR(512),
---     strength VARCHAR(512),
---     weakness VARCHAR(512),
---     growth VARCHAR(512),
---     relationship_value VARCHAR(512),
---     advice VARCHAR(512),
---     stress_management VARCHAR(512),
---     happiness VARCHAR(512),
---     adaptability VARCHAR(512)
--- );
-
--- CREATE TABLE objective_ans (
---     account_id INT,
---     life_priority VARCHAR(512),
---     redo VARCHAR(512),
---     strength VARCHAR(512),
---     weakness VARCHAR(512),
---     growth VARCHAR(512),
---     relationship_value VARCHAR(512),
---     advice VARCHAR(512),
---     stress_management VARCHAR(512),
---     happiness VARCHAR(512),
---     adaptability VARCHAR(512),
---     FOREIGN KEY (account_id) REFERENCES user (account_id) ON DELETE CASCADE
--- );
-
 /*---------------------データ挿入---------------------------*/
--- INSERT INTO
---     subjective_qes (
---         memorable_event,
---         accomplishment,
---         lesson,
---         core_values,
---         compliment,
---         coping,
---         challenge_feelings,
---         ideal_self,
---         future_self,
---         contribution
---     )
--- VALUES (
---         'これまでの人生で、最も印象に残っている出来事は何ですか？その出来事から何を学びましたか？',
---         '何かを成し遂げた時、一番嬉しかったことは何ですか？その経験から、自分の強みだと気づいたことはありますか？',
---         '失敗した経験から学んだことで、最も大きかったことは何ですか？',
---         '過去の経験から、自分が大切にしている価値観は何だと気づきましたか？',
---         '周りからよく褒められることは何ですか？',
---         'ストレスを感じるとき、どのように対処しますか？',
---         '新しいことに挑戦する時、どんな気持ちになりますか？',
---         '理想の自分はどんな姿ですか？',
---         '5年後の自分はどうなっていたいですか？',
---         'どんな仕事や生き方で、社会に貢献したいですか？'
---     );
-
--- INSERT INTO
---     objective_qes (
---         life_priority,
---         redo,
---         strength,
---         weakness,
---         growth,
---         relationship_value,
---         advice,
---         stress_management,
---         happiness,
---         adaptability
---     )
--- VALUES (
---         'あなたにとって、人生で最も大切にしたいことは何ですか？',
---         'もし、人生をやり直せるなら、どんなことをしたいですか？',
---         'あなたが最も得意なことを一つ挙げ、その理由を具体的に説明してください。',
---         'あなたが最も苦手なことを一つ挙げ、その理由を具体的に説明してください。',
---         '過去に最も成長できた経験は何ですか？その経験から、何を学びましたか？',
---         '人間関係において、最も大切にしていることは何ですか？',
---         'もし、誰か人間関係で何か一つだけアドバイスできるとしたら、どんなことを言いますか？',
---         'ストレスを感じた時、どのように対処しますか？',
---         '幸せを感じる瞬間は、どのような時ですか？',
---         '変化に対して、あなたはどちらかと言えば積極的に対応する方ですか、それとも消極的な方ですか？'
---     );
+INSERT INTO questions (question_key, question_text, category) VALUES
+-- 主観的質問
+('memorable_event', 'これまでの人生で最も印象に残っている出来事は何ですか？', '主観'),
+('accomplishment', '何かを成し遂げた時、一番嬉しかったことは何ですか？', '主観'),
+('lesson', '失敗した経験から学んだことで、最も大きかったことは何ですか？', '主観'),
+('core_values', '過去の経験から、自分が大切にしている価値観は何だと思いますか？', '主観'),
+('compliment', 'あなたが周りからよく褒められることは何ですか？', '主観'),
+('coping', 'あなたはストレスを感じるとき、どのように対処しますか？', '主観'),
+('challenge_feelings', '新しいことに挑戦する時、どんな気持ちになりますか？', '主観'),
+('ideal_self', 'あなたの理想の自分はどんな姿ですか？', '主観'),
+('future_self', '5年後の自分はどうなっていたいですか？', '主観'),
+('contribution', 'どんな仕事や生き方で、社会に貢献したいですか？', '主観'),
+-- 客観的質問
+('life_priority', 'あなたにとって、人生で最も大切にしたいことは何ですか？', '客観'),
+('redo', 'もし、人生をやり直せるなら、どんなことをしたいですか？', '客観'),
+('strength', 'あなたが最も得意なことを一つ挙げ、その理由を具体的に説明してください。', '客観'),
+('weakness', 'あなたが最も苦手なことを一つ挙げ、その理由を具体的に説明してください。', '客観'),
+('growth', '過去に最も成長できた経験は何ですか？その経験から、何を学びましたか？', '客観'),
+('relationship_value', '人間関係において、最も大切にしていることは何ですか？', '客観'),
+('advice', 'もし、誰かに人間関係で何か一つだけアドバイスできるとしたら、どんなことを言いますか？', '客観'),
+('stress_management', 'ストレスを感じた時、どのように対処しますか？', '客観'),
+('happiness', '幸せを感じる瞬間は、どのような時ですか？', '客観'),
+('adaptability', '変化に対して、あなたはどちらかと言えば積極的に対応する方ですか、それとも消極的な方ですか？', '客観');
