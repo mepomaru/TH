@@ -48,7 +48,7 @@ if ($error["status"]) {
         }
 
         // INSERT文の準備
-        $stmt = $conn->prepare("INSERT INTO " . TBL_SBJ_ANS . " (account_id, memorable_event, accomplishment, lesson, core_values, compliment, coping, challenge_feelings, ideal_self, future_self, contribution) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO " . TBL_ANS . " (account_id, memorable_event, accomplishment, lesson, core_values, compliment, coping, challenge_feelings, ideal_self, future_self, contribution) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if (!$stmt) {
             throw new Exception("プリペアドステートメントの準備に失敗しました: " . $conn->error);
         }
