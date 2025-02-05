@@ -56,6 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <header>
+        <h1>TrueHue - 新規登録</h1>
+    </header>
     <div class="container">
         <div class="card">
             <h2>ログイン</h2>
