@@ -1,62 +1,42 @@
 <?php
-// セッションを開始
 session_start();
-include '../../../data/def/def.php';
+include '../../../data/def/def.php'; // データベース接続設定ファイル
 
-//名前をindex.phpから取得する
-$uname = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-
-//入力チェック
-$error = [
-    "status" => true,
-    "message" => null
-];
-
-//NULL判定
-if (!$uname) {
-    $error["status"] = false;
-    $error["message"] = '名前が入力されていません。';     //必要に応じて表示
+// `$_SESSION['account_id']` がなければ `register.php` にリダイレクト
+if (!isset($_SESSION['account_id'])) {
+    header("Location: register.php");
+    exit;
 }
 
-//phpが最後まで実行されたかを確認するフラグ
-$sucsess = true;
+// ユーザーIDを取得
+$account_id = $_SESSION['account_id'];
 
-if ($error["status"]) {
-    try {
-        // データベース接続
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-        // 接続チェック
-        if ($conn->connect_error) {
-            die("Connect failed: " . $conn->connect_error);
-        }
-
-        // プリペアドステートメントを使用してユーザー情報を挿入する
-        $stmt = $conn->prepare("INSERT INTO " . TBL_USER . " (uname) VALUES (?)");
-        if (!$stmt) {
-            die(" プリペアドステートメントの準備に失敗しました: " . $conn->error);
-        }
-
-        $stmt->bind_param("s", $uname);
-
-        // プリペアドステートメントを実行
-        if (!$stmt->execute()) {
-            throw new Exception("データベースエラー: " . $stmt->error);
-        }
-
-        // 成功した場合
-        $error_message = "データが正常に登録されました";
-        $stmt->close();
-    } catch (mysqli_sql_exception $e) {
-        $error_message = "データ登録に失敗されました";
-    } catch (Exception $e) {
-        $error_message = "データ登録に失敗されました";
-        // エラーメッセージの表示
-        $error_message = "エラー: " . $e->getMessage();
-    }
-    // データベースとの接続を閉じる
-    $conn->close();
+// データベース接続
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if (!$conn) {
+    die("データベース接続エラー: " . mysqli_connect_error());
 }
+
+// `user` テーブルから `uname` を取得
+$sql = "SELECT uname FROM user WHERE account_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $account_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$user = mysqli_fetch_assoc($result);
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+
+// ユーザーが存在しない場合は登録画面へリダイレクト
+if (!$user) {
+    session_unset();
+    session_destroy();
+    header("Location: register.php");
+    exit;
+}
+
+// `uname` をセッションに保存（リマインダー目的）
+$_SESSION['uname'] = $user['uname'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -64,7 +44,7 @@ if ($error["status"]) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueHue - 登録画面</title>
+    <title>TrueHue - ご使用上の注意</title>
     <link rel="stylesheet" href="../css/remind.css">
 </head>
 
