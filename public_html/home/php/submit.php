@@ -70,7 +70,7 @@ if (mysqli_stmt_execute($stmt)) {
     $_SESSION['form_data']['id'] = mysqli_insert_id($conn); // 挿入したデータのIDを保存
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
-    header("Location: loding.php");
+    header("Location: loading.php");
     exit;
 } else {
     echo "エラー: " . mysqli_stmt_error($stmt);
