@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?php
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueHue - 登録画面</title>
-    <link rel="stylesheet" href="./home/css/index.css">
-</head>
+// セッションをリセット（毎回新規登録画面からスタート）
+session_unset();
+session_destroy();
 
-<body>
-    <!-- ヘッダー -->
-    <header>
-        <h1>TrueHue</h1>
-    </header>
-
-    <!-- 登録フォームのコンテナ -->
-    <div class="container">
-        <div class="card">
-            <h2>登録画面</h2>
-            <form action="./home/php/remind.php" method="post">
-                <!-- 名前の入力欄 -->
-                <label for="name">ニックネームを入力してください</label>
-                <input type="text" id="name" name="name" placeholder="" required>
-
-                <!-- 登録ボタン -->
-                <button type="submit" class="button">登録する</button>
-            </form>
-        </div>
-    </div>
-</body>
-
-</html>
+// `register.php` にリダイレクト
+header("Location: ../public_html/home/php/register.php");
+exit;
